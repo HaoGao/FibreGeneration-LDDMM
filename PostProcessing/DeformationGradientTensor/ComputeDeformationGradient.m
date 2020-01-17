@@ -35,7 +35,7 @@ for i=1:size(element,1)
 end
 
 %write out fibre data
-fid1 = fopen([filepath 'fibreDeformation_TemplateToTarget.txt','w');
+fid1 = fopen([filepath 'fibreDeformation_TemplateToTarget.txt'],'w');
  
 for i = 1 : size(fibre_sheet,1)
     fprintf(fid1, '%f\t %f\t %f\n', fibre_sheet(i,1),fibre_sheet(i,2),fibre_sheet(i,3));
@@ -47,10 +47,10 @@ for i=1:size(node,1)
     node_deform(i,:)=node(i,:)+node_dxdydz(i,:);
 end
 
-fid2 = fopen([filepath 'nodeDeformed_TemplateToTarget.txt','w');
+fid2 = fopen([filepath 'nodeDeformed_TemplateToTarget.txt'],'w');
  
 for i = 1 : size(node_deform,1)
-    fprintf(fid2, '%f\t %f\t %f\n', node_deform(i,1),node_deform(i,2),node_deform(i,3));
+    fprintf(fid2, '%i\t %f\t %f\t %f\n', i,node_deform(i,1),node_deform(i,2),node_deform(i,3));
 end
 fclose(fid2);
 
